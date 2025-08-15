@@ -47,7 +47,7 @@ const sectionClasses = [
 <section 
   id={id}
   class={sectionClasses}
-  style={backgroundImage ? `background-image: url(${backgroundImage}); background-size: cover; background-position: center; background-repeat: no-repeat;` : ''}
+  style={backgroundImage ? `background-image: url(${backgroundImage}); background-size: cover; background-position: center; ${staticBackground ? 'background-attachment: fixed;' : ''}` : ''}
 >
   <!-- Background Overlay if using background image -->
   {backgroundImage && (

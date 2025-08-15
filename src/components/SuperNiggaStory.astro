@@ -8,11 +8,12 @@ import Section from './Section.astro';
   title=""
   subtitle=""
   backgroundColor="bg-black"
+  backgroundImage="/story/bg2.png"
   fullWidth={true}
-  staticBackground={false}
+  staticBackground={true}
 >
 
-<section class="relative min-h-screen w-full text-white overflow-hidden story-background">
+<section class="relative min-h-screen w-full text-white overflow-hidden">
   <!-- Background Pattern -->
   <div class="absolute inset-0 opacity-15">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:50px_50px]"></div>
@@ -96,61 +97,3 @@ import Section from './Section.astro';
 
 </section>
 </Section>
-
-<style>
-  .story-background {
-    background-image: url('/story/bg2.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll; /* Better performance on mobile */
-  }
-  
-  /* Mobile optimizations */
-  @media (max-width: 768px) {
-    .story-background {
-      background-size: cover;
-      background-position: center center;
-      /* Use a smaller background for mobile if needed */
-      background-attachment: scroll;
-      will-change: transform; /* Optimize for animations */
-    }
-  }
-  
-  /* Preload optimization */
-  .story-background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: inherit;
-    background-size: inherit;
-    background-position: inherit;
-    background-repeat: inherit;
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 0.3s ease;
-  }
-  
-  /* Fade in effect when loaded */
-  .story-background.loaded::before {
-    opacity: 1;
-  }
-</style>
-
-<script>
-  // Optimize background loading
-  document.addEventListener('DOMContentLoaded', () => {
-    const storySection = document.querySelector('.story-background');
-    if (storySection) {
-      // Preload the background image
-      const img = new Image();
-      img.onload = () => {
-        storySection.classList.add('loaded');
-      };
-      img.src = '/story/bg2.png';
-    }
-  });
-</script>
