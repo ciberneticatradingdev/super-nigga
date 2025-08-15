@@ -10,6 +10,7 @@ interface Props {
 const { title, description, keywords, canonicalURL, robots } = Astro.props;
 
 // COMPONENTS
+import IntroScreen from '../components/IntroScreen.astro';
 
 ---
 
@@ -60,12 +61,12 @@ const { title, description, keywords, canonicalURL, robots } = Astro.props;
 			href="https://fonts.googleapis.com/icon?family=Material+Icons"
 			rel="stylesheet"
 		/>
-		<!-- PRELOAD CRITICAL IMAGES -->
-		<link rel="preload" as="image" href="/story/bg2.png" />
 		<!-- TITLE -->
 		<title>{title}</title>
 	</head>
 	<body class="bg-[#1B1B1B]">
+		<!-- INTRO SCREEN -->
+		<IntroScreen />
 		<!-- NAVIGATION BAR -->
 		<!-- <Nav /> -->
 		<slot />

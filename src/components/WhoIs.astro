@@ -1,5 +1,6 @@
 ---
 import Section from './Section.astro';
+import { buynow } from '../utils/utils';
 ---
 
 <Section 
@@ -12,14 +13,12 @@ import Section from './Section.astro';
 >
 
     <section id="" class="flex items-center justify-center py-20">
-      <div class="text-center">
-        <h2 class="text-6xl md:text-8xl font-black text-white tracking-wider drop-shadow-2xl" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), -1px -1px 2px rgba(0,0,0,0.5); -webkit-text-stroke: 2px white;">
-          WHO IS
-          <br>
-          <span class="text-[#082f6d] drop-shadow-2xl" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), -1px -1px 2px rgba(255,255,255,0.3); -webkit-text-stroke: 2px white;">SUPER</span>
-          <span class="text-[#c21936] drop-shadow-2xl" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), -1px -1px 2px rgba(255,255,255,0.3); -webkit-text-stroke: 2px white;">NIGGA?</span>
-          <!-- <img src="/title-nigga.png" class=""> -->
-        </h2>
+      <div class="w-full flex justify-center items-center">
+            <!-- Buy Now Button -->
+          <a href={buynow} class="hover:scale-110 transition-transform duration-300 flex justify-center">
+            <img src="/new-socials/buynow-silver.png" alt="Buy Now" class="w-full sm:w-6/12" />
+          </a>
+
       </div>
     </section>
 

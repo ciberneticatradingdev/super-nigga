@@ -1,0 +1,109 @@
+---
+// IntroScreen.astro - Pantalla de introducción simple con mismo background del Hero
+import HeroBackground from './HeroBackground.astro';
+---
+
+<div id="intro-screen" class="fixed inset-0 z-50 min-h-screen flex items-center justify-center relative w-full overflow-hidden bg-black">
+  <!-- Same Background as Hero -->
+  <HeroBackground />
+  
+  <!-- JOIN Button -->
+  <div class="relative z-10 text-center">
+    <button 
+      id="join-btn"
+      class="transition-all duration-300 transform hover:scale-105 cursor-pointer text-center"
+    >
+      <div class="text-lg md:text-xl font-semibold text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">CLICK HERE TO</div>
+      <div class="text-5xl md:text-7xl font-black tracking-wider drop-shadow-2xl" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), -1px -1px 2px rgba(0,0,0,0.5); -webkit-text-stroke: 2px white;">
+        <span class="text-[#082f6d] drop-shadow-2xl" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), -1px -1px 2px rgba(255,255,255,0.3); -webkit-text-stroke: 2px white;">JOIN</span>
+      </div>
+    </button>
+  </div>
+</div>
+
+<!-- Audio Element -->
+<audio id="background-audio" loop preload="auto">
+  <source src="/nigga.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<style>
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+  }
+  
+  /* Smooth fade out animation */
+  .fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease-in-out;
+  }
+  
+  /* Hide scrollbar during intro */
+  body.intro-active {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const introScreen = document.getElementById('intro-screen');
+    const joinBtn = document.getElementById('join-btn');
+    const backgroundAudio = document.getElementById('background-audio') as HTMLAudioElement;
+    
+    // Add intro-active class to body
+    document.body.classList.add('intro-active');
+    
+    // Handle join button click
+    joinBtn?.addEventListener('click', async () => {
+      try {
+        // Start audio playback
+        if (backgroundAudio) {
+          backgroundAudio.volume = 0.3; // Set volume to 30%
+          await backgroundAudio.play();
+          console.log('Background audio started');
+        }
+        
+        // Add fade out animation
+        introScreen?.classList.add('fade-out');
+        
+        // Remove intro screen after animation
+        setTimeout(() => {
+          if (introScreen) {
+            introScreen.style.display = 'none';
+          }
+          // Remove intro-active class to restore scrolling
+          document.body.classList.remove('intro-active');
+        }, 800);
+        
+      } catch (error) {
+        console.error('Error starting audio:', error);
+        // Still proceed with removing intro screen even if audio fails
+        introScreen?.classList.add('fade-out');
+        setTimeout(() => {
+          if (introScreen) {
+            introScreen.style.display = 'none';
+          }
+          document.body.classList.remove('intro-active');
+        }, 800);
+      }
+    });
+    
+    // Handle keyboard interaction (Enter or Space)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        joinBtn?.click();
+      }
+    });
+  });
+</script>

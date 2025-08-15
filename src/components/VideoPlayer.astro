@@ -36,15 +36,31 @@
 <script>
   // Video player functionality
   const videoPlayer = document.getElementById('video-player');
-  const video = document.getElementById('main-video');
+  const video = document.getElementById('main-video') as HTMLVideoElement;
   const loading = document.getElementById('video-loading');
   const closeBtn = document.getElementById('close-video');
+  
+  // Declare global functions for TypeScript
+  declare global {
+    interface Window {
+      showVideoPlayer: () => void;
+      hideVideoPlayer: () => void;
+    }
+  }
 
   // Function to show video player
   function showVideoPlayer() {
     if (videoPlayer && video && loading) {
       videoPlayer.classList.remove('hidden');
       loading.style.display = 'flex';
+      
+      // Pause background music if it's playing
+      const backgroundAudio = document.getElementById('background-audio') as HTMLAudioElement;
+      if (backgroundAudio && !backgroundAudio.paused) {
+        backgroundAudio.pause();
+        // Store that we paused it so we can resume later
+        backgroundAudio.dataset.pausedByVideo = 'true';
+      }
       
       // Load and play video
       video.load();
@@ -63,6 +79,16 @@
       videoPlayer.classList.add('hidden');
       video.pause();
       video.currentTime = 0;
+      
+      // Resume background music if it was paused by video
+      const backgroundAudio = document.getElementById('background-audio') as HTMLAudioElement;
+      if (backgroundAudio && backgroundAudio.dataset.pausedByVideo === 'true') {
+        backgroundAudio.play().catch(error => {
+          console.error('Error resuming background audio:', error);
+        });
+        // Clear the flag
+        delete backgroundAudio.dataset.pausedByVideo;
+      }
     }
   }
 
