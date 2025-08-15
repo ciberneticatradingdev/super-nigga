@@ -6,6 +6,38 @@ import HeroBackground from './HeroBackground.astro';
 ---
 
 <section id="hero-section" class="min-h-screen flex flex-col items-center justify-center relative w-full overflow-hidden bg-black">
+  <!-- Top Banner with Infinite Carousel -->
+  <div class="absolute top-0 left-0 w-full z-20 bg-[#082f6d] py-2 overflow-hidden">
+    <div class="flex animate-scroll whitespace-nowrap">
+      <div class="flex items-center space-x-8 text-white font-black text-sm md:text-base" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8), -1px -1px 2px rgba(0,0,0,0.5);">
+        <span class="flex items-center">
+          WE ARE LIVE!
+        </span>
+        <span class="flex items-center cursor-pointer hover:opacity-80 transition-opacity ca-copy-btn">
+          CA: {CA}
+        </span>
+        <span class="flex items-center">
+          WE ARE LIVE!
+        </span>
+        <span class="flex items-center cursor-pointer hover:opacity-80 transition-opacity ca-copy-btn">
+          CA: {CA}
+        </span>
+        <span class="flex items-center">
+          WE ARE LIVE!
+        </span>
+        <span class="flex items-center cursor-pointer hover:opacity-80 transition-opacity ca-copy-btn">
+          CA: {CA}
+        </span>
+        <span class="flex items-center">
+          WE ARE LIVE!
+        </span>
+        <span class="flex items-center cursor-pointer hover:opacity-80 transition-opacity ca-copy-btn">
+          CA: {CA}
+        </span>
+      </div>
+     </div>
+   </div>
+  
   <!-- Background with star mask -->
   <HeroBackground />
   
@@ -49,3 +81,142 @@ import HeroBackground from './HeroBackground.astro';
   <!-- Mobile Black Overlay -->
   <div id="mobile-black-overlay" class="fixed inset-0 z-40 bg-black opacity-0 pointer-events-none xl:hidden"></div>
 </section>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+  }
+  
+  /* Toast notification styles */
+  .toast {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    background: #082f6d !important;
+    color: white !important;
+    padding: 16px 24px !important;
+    border-radius: 12px !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    border: 2px solid #FFD700 !important;
+    z-index: 999999 !important;
+    opacity: 0 !important;
+    transform: translateX(100%) scale(0.8) !important;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+    pointer-events: none !important;
+    min-width: 250px !important;
+    text-align: center !important;
+  }
+  
+  .toast.show {
+    opacity: 1 !important;
+    transform: translateX(0) scale(1) !important;
+    pointer-events: auto !important;
+  }
+</style>
+
+<script define:vars={{ CA }}>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, CA value:', CA);
+    
+    // Add click event listeners to all CA copy buttons
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('.ca-copy-btn')) {
+        e.preventDefault();
+        console.log('CA button clicked');
+        copyCA();
+      }
+    });
+  });
+  
+  function copyCA() {
+    console.log('copyCA function called, CA value:', CA);
+    
+    if (!CA) {
+      console.error('CA value is undefined or empty');
+      showToast('Error: CA not found');
+      return;
+    }
+    
+    navigator.clipboard.writeText(CA).then(() => {
+      console.log('CA copied successfully:', CA);
+      showToast('CA copied to clipboard!');
+    }).catch((error) => {
+      console.error('Failed to copy CA:', error);
+      showToast('Failed to copy CA');
+    });
+  }
+  
+  function showToast(message) {
+    console.log('showToast called with message:', message);
+    
+    // Remove existing toast if any
+    const existingToast = document.querySelector('.toast');
+    if (existingToast) {
+      console.log('Removing existing toast');
+      existingToast.remove();
+    }
+    
+    // Create new toast
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    toast.style.cssText = `
+      position: fixed !important;
+      top: 20px !important;
+      right: 20px !important;
+      background: #082f6d !important;
+      color: white !important;
+      padding: 16px 24px !important;
+      border-radius: 12px !important;
+      font-weight: bold !important;
+      font-size: 16px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+      border: 2px solid #FFD700 !important;
+      z-index: 999999 !important;
+      opacity: 0 !important;
+      transform: translateX(100%) scale(0.8) !important;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+      pointer-events: none !important;
+      min-width: 250px !important;
+      text-align: center !important;
+    `;
+    
+    document.body.appendChild(toast);
+    console.log('Toast added to body:', toast);
+    
+    // Show toast with animation
+    requestAnimationFrame(() => {
+      console.log('Adding show class to toast');
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(0) scale(1)';
+      toast.style.pointerEvents = 'auto';
+      toast.classList.add('show');
+    });
+    
+    // Hide and remove toast after 3 seconds
+    setTimeout(() => {
+      console.log('Hiding toast');
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(100%) scale(0.8)';
+      toast.classList.remove('show');
+      
+      setTimeout(() => {
+        if (toast.parentNode) {
+          console.log('Removing toast from DOM');
+          toast.remove();
+        }
+      }, 400);
+    }, 3000);
+  }
+</script>
