@@ -1,0 +1,93 @@
+---
+// VideoPlayer component - Handles video playback functionality
+---
+
+<div id="video-player" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center">
+  <div class="relative w-full h-full max-w-4xl max-h-[80vh] flex items-center justify-center">
+    <!-- Loading indicator -->
+    <div id="video-loading" class="absolute inset-0 flex items-center justify-center">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+    </div>
+    
+    <!-- Video element -->
+    <video 
+      id="main-video" 
+      class="w-full h-full object-contain" 
+      controls 
+      preload="none"
+    >
+      <source src="/video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    
+    <!-- Close button -->
+    <button 
+      id="close-video" 
+      class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+      aria-label="Close video"
+    >
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  // Video player functionality
+  const videoPlayer = document.getElementById('video-player');
+  const video = document.getElementById('main-video');
+  const loading = document.getElementById('video-loading');
+  const closeBtn = document.getElementById('close-video');
+
+  // Function to show video player
+  function showVideoPlayer() {
+    if (videoPlayer && video && loading) {
+      videoPlayer.classList.remove('hidden');
+      loading.style.display = 'flex';
+      
+      // Load and play video
+      video.load();
+      video.play().then(() => {
+        loading.style.display = 'none';
+      }).catch(error => {
+        console.error('Error playing video:', error);
+        loading.style.display = 'none';
+      });
+    }
+  }
+
+  // Function to hide video player
+  function hideVideoPlayer() {
+    if (videoPlayer && video) {
+      videoPlayer.classList.add('hidden');
+      video.pause();
+      video.currentTime = 0;
+    }
+  }
+
+  // Close video when clicking close button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', hideVideoPlayer);
+  }
+
+  // Close video when clicking outside the video
+  if (videoPlayer) {
+    videoPlayer.addEventListener('click', (e) => {
+      if (e.target === videoPlayer) {
+        hideVideoPlayer();
+      }
+    });
+  }
+
+  // Close video with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      hideVideoPlayer();
+    }
+  });
+
+  // Expose functions globally for use by other components
+  window.showVideoPlayer = showVideoPlayer;
+  window.hideVideoPlayer = hideVideoPlayer;
+</script>

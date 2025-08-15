@@ -1,0 +1,51 @@
+---
+import { CA, tg, dex, x, ig, tiktok, buynow } from '../utils/utils';
+import VideoPlayer from './VideoPlayer.astro';
+import PlayButton from './PlayButton.astro';
+import HeroBackground from './HeroBackground.astro';
+---
+
+<section id="hero-section" class="min-h-screen flex flex-col items-center justify-center relative w-full overflow-hidden bg-black">
+  <!-- Background with star mask -->
+  <HeroBackground />
+  
+  <!-- Hero Content -->
+  <div id="hero-content" class="z-10 absolute flex flex-col items-center justify-between h-screen px-20 py-16 w-full">
+    <!-- Logo/Title -->
+    <div class="flex justify-between w-full">
+      <!-- Placeholder for logo if needed -->
+    </div>
+
+    <!-- Play Button -->
+     <div class='pb-28'>
+       <PlayButton />
+
+     </div>
+    
+    <!-- Footer -->
+    <footer id="hero-footer" class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <div class="flex items-center justify-center space-x-8">
+        <!-- Dexscreener -->
+        <a href={dex} target="_blank" rel="noopener noreferrer" class=" hover:scale-110 transition-transform duration-300">
+          <img src="/new-socials/dexscreener.png" alt="Dexscreener" class="w-20" />
+        </a>
+        
+        <!-- Telegram -->
+        <a href={tg} target="_blank" rel="noopener noreferrer" class=" hover:scale-110 transition-transform duration-300">
+          <img src="/new-socials/new-tg.png" alt="Telegram" class="w-20" />
+        </a>
+        
+        <!-- Twitter/X -->
+        <a href={x} target="_blank" rel="noopener noreferrer" class=" hover:scale-110 transition-transform duration-300">
+          <img src="/new-socials/silver-x.png" alt="Twitter/X" class="w-20" />
+        </a>
+      </div>
+    </footer>
+  </div>
+  
+  <!-- Video Player -->
+  <VideoPlayer />
+  
+  <!-- Mobile Black Overlay -->
+  <div id="mobile-black-overlay" class="fixed inset-0 z-40 bg-black opacity-0 pointer-events-none xl:hidden"></div>
+</section>

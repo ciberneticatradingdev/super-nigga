@@ -1,0 +1,33 @@
+---
+// HeroBackground component - Handles the hero section background with star mask
+---
+
+<!-- Background Image -->
+<picture
+  id="hero-key"
+  class="h-screen block overflow-hidden fixed"
+>
+  <img
+    id="hero-key-background"
+    src="/image.webp"
+    alt="nigga"
+    class="w-full h-full object-cover"
+  />
+</picture>
+
+<!-- Star Mask -->
+<div id="logo-mask" class="fixed top-0 w-full h-screen pointer-events-none"></div>
+
+<style>
+  #logo-mask {
+    mask-image: url('/star.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 0;
+    background-image: url('/star.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0;
+    filter: brightness(0) invert(1);
+  }
+</style>

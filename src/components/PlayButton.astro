@@ -1,0 +1,38 @@
+---
+// PlayButton component - Handles the play button functionality
+---
+
+<button 
+  id="play-btn" 
+  class="group relative flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-2xl hover:shadow-white/20"
+  aria-label="Play video"
+>
+  <!-- Play icon -->
+  <svg 
+    class="w-8 h-8 text-white ml-1 group-hover:scale-110 transition-transform duration-300" 
+    fill="currentColor" 
+    viewBox="0 0 24 24"
+  >
+    <path d="M8 5v14l11-7z"/>
+  </svg>
+  
+  <!-- Pulse animation rings -->
+  <div class="absolute inset-0 rounded-full border-2 border-white/30 animate-ping"></div>
+  <div class="absolute inset-0 rounded-full border border-white/20 animate-pulse"></div>
+</button>
+
+<script>
+  // Play button functionality
+  const playBtn = document.getElementById('play-btn');
+
+  if (playBtn) {
+    playBtn.addEventListener('click', () => {
+      // Call the global showVideoPlayer function from VideoPlayer component
+      if (typeof window.showVideoPlayer === 'function') {
+        window.showVideoPlayer();
+      } else {
+        console.error('VideoPlayer component not loaded or showVideoPlayer function not available');
+      }
+    });
+  }
+</script>

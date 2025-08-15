@@ -1,0 +1,104 @@
+---
+export interface Props {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+  backgroundColor?: string;
+  textColor?: string;
+  backgroundImage?: string;
+  fullHeight?: boolean;
+  className?: string;
+  fullWidth?: boolean;
+}
+
+const {
+  id,
+  title,
+  subtitle,
+  backgroundColor = 'bg-black',
+  textColor = 'text-white',
+  backgroundImage,
+  fullHeight = true,
+  className = '',
+  fullWidth = false
+} = Astro.props;
+
+const sectionClasses = [
+  'section-slide',
+  fullHeight ? 'min-h-screen' : 'min-h-[50vh]',
+  'flex flex-col items-center justify-center',
+  'relative w-full',
+  fullWidth ? 'py-16' : 'px-4 py-16 md:px-8 lg:px-16',
+  backgroundColor,
+  textColor,
+  className
+].join(' ');
+---
+
+<section 
+  id={id}
+  class={sectionClasses}
+  style={backgroundImage ? `background-image: url(${backgroundImage}); background-size: cover; background-position: center;` : ''}
+>
+  <!-- Background Overlay if using background image -->
+  {backgroundImage && (
+    <div class="absolute inset-0 bg-black/50 z-0"></div>
+  )}
+  
+  <!-- Content Container -->
+  <div class={`relative z-10 ${fullWidth ? 'w-full' : 'max-w-6xl mx-auto'} text-center`}>
+    {title && (
+      <h2 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+        {title}
+      </h2>
+    )}
+    
+    {subtitle && (
+      <p class="text-xl md:text-2xl mb-8 opacity-80 animate-fade-in-delay">
+        {subtitle}
+      </p>
+    )}
+    
+    <!-- Slot for custom content -->
+    <div class="animate-fade-in-delay-2">
+      <slot />
+    </div>
+  </div>
+  
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
+
+<style>
+  .section-slide {
+    scroll-snap-align: start;
+    transition: all 0.6s ease-in-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  .animate-fade-in-delay {
+    animation: fadeInUp 1s ease-out 0.3s both;
+  }
+  
+  .animate-fade-in-delay-2 {
+    animation: fadeInUp 1s ease-out 0.6s both;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

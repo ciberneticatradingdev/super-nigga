@@ -1,0 +1,146 @@
+---
+import Section from './Section.astro';
+---
+
+<Section 
+  id="about"
+  title="About Super Nigga"
+  subtitle="The future of community-driven cryptocurrency"
+  backgroundColor="bg-gradient-to-br from-orange-900 via-red-900 to-black"
+  backgroundImage="/hero3.png"
+>
+  <div class="max-w-5xl mx-auto">
+    <!-- Main Description -->
+    <div class="mb-12">
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+        <p class="text-xl leading-relaxed text-center mb-6">
+          Super Nigga represents more than just a cryptocurrency—it's a movement towards true decentralization, 
+          community empowerment, and innovative blockchain solutions that put the power back in the hands of the people.
+        </p>
+        <p class="text-lg leading-relaxed text-center opacity-90">
+          Built on Solana for lightning-fast transactions and minimal fees, Super Nigga is designed to be 
+          accessible, scalable, and sustainable for the long term.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Features Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <!-- Community Driven -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zM4 18v-4h3v4h2v-7.5c0-1.1.9-2 2-2s2 .9 2 2V18h2v-4h3v4h4v2H0v-2h4z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-yellow-400">Community Driven</h3>
+        <p class="opacity-90">Every decision is made by the community, for the community. True decentralized governance.</p>
+      </div>
+      
+      <!-- Fast & Secure -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12,1L21,5V11C21,16.55 17.16,21.74 12,23C6.84,21.74 3,16.55 3,11V5L12,1M12,7C10.89,7 10,7.89 10,9A2,2 0 0,0 12,11A2,2 0 0,0 14,9C14,7.89 13.1,7 12,7Z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-green-400">Fast & Secure</h3>
+        <p class="opacity-90">Built on Solana's high-performance blockchain with military-grade security protocols.</p>
+      </div>
+      
+      <!-- Innovative -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9,11H7L9,9V11M13,9V11H11L13,9M20,3H4A2,2 0 0,0 2,5V19A2,2 0 0,0 4,21H20A2,2 0 0,0 22,19V5A2,2 0 0,0 20,3M20,19H4V5H20V19Z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-purple-400">Innovative</h3>
+        <p class="opacity-90">Cutting-edge features and utilities that push the boundaries of what's possible.</p>
+      </div>
+    </div>
+    
+    <!-- Tokenomics Overview -->
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+        <h3 class="text-2xl font-bold mb-6 text-yellow-400">Tokenomics</h3>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center">
+            <span class="opacity-90">Total Supply:</span>
+            <span class="font-bold text-green-400">1,000,000,000</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="opacity-90">Liquidity Pool:</span>
+            <span class="font-bold text-blue-400">90%</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="opacity-90">Marketing:</span>
+            <span class="font-bold text-purple-400">5%</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="opacity-90">Development:</span>
+            <span class="font-bold text-orange-400">5%</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+        <h3 class="text-2xl font-bold mb-6 text-yellow-400">Roadmap Highlights</h3>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+            <div>
+              <div class="font-bold text-green-400">Phase 1: Launch</div>
+              <div class="text-sm opacity-80">Token deployment & community building</div>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
+            <div>
+              <div class="font-bold text-yellow-400">Phase 2: Growth</div>
+              <div class="text-sm opacity-80">Marketing campaigns & partnerships</div>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+            <div>
+              <div class="font-bold text-blue-400">Phase 3: Utility</div>
+              <div class="text-sm opacity-80">DeFi integration & staking rewards</div>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+            <div>
+              <div class="font-bold text-purple-400">Phase 4: Expansion</div>
+              <div class="text-sm opacity-80">Cross-chain bridges & ecosystem growth</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Call to Action -->
+    <div class="text-center">
+      <div class="bg-gradient-to-r from-yellow-600 to-orange-600 rounded-2xl p-8 border border-yellow-500/30">
+        <h3 class="text-2xl font-bold mb-4">Join the Revolution</h3>
+        <p class="text-lg mb-6 opacity-90">
+          Be part of something bigger. Join thousands of holders who believe in the future of decentralized finance.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="#resources"
+            class="bg-white text-black px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors inline-flex items-center justify-center"
+          >
+            Get Started
+          </a>
+          <a 
+            href="#story"
+            class="border-2 border-white px-8 py-3 rounded-xl font-bold hover:bg-white hover:text-black transition-colors inline-flex items-center justify-center"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
