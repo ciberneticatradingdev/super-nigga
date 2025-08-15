@@ -1,0 +1,135 @@
+---
+// SuperNiggaStory.astro - Sección que explica quién es Super Nigga
+import Section from './Section.astro';
+---
+
+<Section 
+  id="WhoIs"
+  title=""
+  subtitle=""
+  backgroundColor="bg-black"
+  backgroundImage="/story/bg.png"
+  fullWidth={true}
+  staticBackground={true}
+>
+
+<section class="relative min-h-screen w-full text-white overflow-hidden">
+  <!-- Background Pattern - American Superman Style -->
+  <div class="absolute inset-0 opacity-15">
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600/30 via-red-600/20 to-blue-800/30"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:50px_50px]"></div>
+  </div>
+  
+  <!-- Main Content Container -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4">
+    <!-- Title -->
+    <div class="text-center mb-16">
+      <h2 class="text-6xl md:text-8xl font-black text-blue-400 mb-4 drop-shadow-2xl" 
+      style="text-shadow: 3px 3px 0px #000000, -1px -1px 0px #000000, 1px -1px 0px #000000, -1px 1px 0px #000000; -webkit-text-stroke: 2px #000000;">
+      MEET THE LEGEND
+    </h2>
+    <div class="w-32 h-2 bg-gradient-to-r from-blue-500 to-red-500 mx-auto rounded-full"></div>
+  </div>
+  
+  <!-- Story Grid Layout -->
+  <div class="grid grid-cols-12 gap-8 items-center">
+    
+    <!-- Image 1 - Top Left -->
+    <div class="col-span-12 md:col-span-4 relative">
+      <div class="relative group">
+        <img src="/story/1.png" alt="Super Nigga Hero" 
+        class="w-full h-80 object-cover rounded-2xl shadow-2xl transform rotate-3 group-hover:rotate-0 transition-transform duration-300 border-4 border-blue-500">
+      </div>
+    </div>
+    
+    <!-- Main Text Block -->
+    <div class="col-span-12 md:col-span-8 space-y-6">
+      <div class="bg-gradient-to-r from-blue-900/80 to-black/80 p-8 rounded-2xl border-2 border-blue-400/50 backdrop-blur-sm">
+        <p class="text-xl md:text-2xl leading-relaxed font-bold text-blue-100">
+          <span class="text-blue-400 text-3xl">SUPERNIGGA</span> isn't your typical superhero. 
+          He's a <span class="text-red-400">cape-wearing anti-hero</span> who eats fried chicken and drives a 
+          <span class="text-purple-400">Hellcat at 200mph</span> with a snowbunny in the passenger seat.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Mission Text - Moved up -->
+    <div class="col-span-12 md:col-span-7 space-y-6">
+      <div class="bg-gradient-to-l from-red-900/80 to-black/80 p-8 rounded-2xl border-2 border-red-400/50 backdrop-blur-sm">
+        <h3 class="text-3xl font-black text-red-400 mb-4">HIS MISSION:</h3>
+        <p class="text-lg md:text-xl leading-relaxed text-red-100">
+          Keep young people <span class="text-yellow-400">trapped in the hood</span> with no future, 
+          no goals and no plan. Redirect all ambition towards 
+          <span class="text-green-400">Jordans, zaza, Hennessy and Hellcats</span>.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Image 2 - Middle Right -->
+    <div class="col-span-12 md:col-span-5 md:col-start-8 relative">
+      <div class="relative group">
+        <img src="/hero2.png" alt="Super Nigga Lifestyle" 
+        class="w-full h-72 object-cover rounded-2xl shadow-2xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 border-4 border-red-500">
+      </div>
+    </div>
+    
+    <!-- Image 3 - Full Width -->
+    <div class="col-span-12 relative mb-8">
+      <div class="relative group">
+        <img src="/hero3.png" alt="Super Nigga Swag" 
+        class="w-full h-80 object-cover rounded-2xl shadow-2xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300 border-4 border-blue-600">
+      </div>
+    </div>
+    
+    <!-- Characteristics -->
+    <div class="col-span-12 md:col-span-8 space-y-6">
+      <div class="bg-gradient-to-r from-blue-900/80 to-black/80 p-8 rounded-2xl border-2 border-blue-400/50 backdrop-blur-sm">
+        <h3 class="text-3xl font-black text-blue-400 mb-4">THE CHARACTER:</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+          <div class="flex items-center space-x-2">
+            <span class="text-yellow-400">💰</span>
+            <span>Gold chains maxed out</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-red-400">🚗</span>
+            <span>Modified Hellcat</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-green-400">�</span>
+            <span>3 months behind on rent</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-purple-400">👑</span>
+            <span>Ego inflated to the max</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Image 4 - Bottom Right -->
+    <div class="col-span-12 md:col-span-4 relative">
+      <div class="relative group">
+        <img src="/hero4.png" alt="Super Nigga Power" 
+        class="w-full h-72 object-cover rounded-2xl shadow-2xl transform -rotate-3 group-hover:rotate-0 transition-transform duration-300 border-4 border-red-600">
+      </div>
+    </div>
+    
+    <!-- Final Message -->
+    <div class="col-span-12 text-center mt-16">
+      <div class="bg-gradient-to-r from-blue-900/80 via-red-900/80 to-blue-800/80 p-8 rounded-2xl border-2 border-gradient-to-r border-blue-400/50 backdrop-blur-sm">
+        <p class="text-2xl md:text-3xl font-black text-blue-400 mb-4"
+        style="text-shadow: 2px 2px 0px #000000; -webkit-text-stroke: 1px #000000;">
+        "He's basically Superman, but instead of saving the hood, he keeps them there."
+      </p>
+      <p class="text-lg text-gray-300">
+        Every SUPERNIGGA token is an embrace of chaos, but make it designer.
+      </p>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+
+</section>
+</Section>

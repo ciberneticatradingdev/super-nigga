@@ -9,6 +9,7 @@ export interface Props {
   fullHeight?: boolean;
   className?: string;
   fullWidth?: boolean;
+  staticBackground?: boolean;
 }
 
 const {
@@ -20,7 +21,8 @@ const {
   backgroundImage,
   fullHeight = true,
   className = '',
-  fullWidth = false
+  fullWidth = false,
+  staticBackground = false
 } = Astro.props;
 
 const sectionClasses = [
@@ -38,7 +40,7 @@ const sectionClasses = [
 <section 
   id={id}
   class={sectionClasses}
-  style={backgroundImage ? `background-image: url(${backgroundImage}); background-size: cover; background-position: center;` : ''}
+  style={backgroundImage ? `background-image: url(${backgroundImage}); background-size: cover; background-position: center; ${staticBackground ? 'background-attachment: fixed;' : ''}` : ''}
 >
   <!-- Background Overlay if using background image -->
   {backgroundImage && (
