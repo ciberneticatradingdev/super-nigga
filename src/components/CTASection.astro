@@ -1,0 +1,70 @@
+---
+import Section from './Section.astro';
+import { CA, tg, dex, x, ig, tiktok, buynow } from '../utils/utils';
+---
+
+<Section 
+  id="cta"
+  title=""
+  subtitle=""
+  backgroundColor=""
+  backgroundImage="/cta.jpeg"
+  staticBackground={false}
+  showScrollIndicator={false}
+>
+  <div class="relative z-10 text-center">
+    <!-- Main CTA Title -->
+    <h2 class="text-5xl md:text-7xl font-black mb-8 tracking-wider drop-shadow-2xl" 
+        style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), -1px -1px 2px rgba(0,0,0,0.5); -webkit-text-stroke: 2px white;">
+      <span class="text-white">JOIN THE</span> 
+      <br>
+      <span class="text-[#082f6d] drop-shadow-2xl" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), -1px -1px 2px rgba(255,255,255,0.3); -webkit-text-stroke: 2px white;">NIGGA</span> 
+      <span class="text-[#c21936] drop-shadow-2xl" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), -1px -1px 2px rgba(255,255,255,0.3); -webkit-text-stroke: 2px white;">REVOLUTION</span>
+    </h2>
+
+    <!-- Subtitle -->
+    <p class="text-2xl md:text-3xl font-bold text-white mb-12 max-w-4xl mx-auto leading-relaxed"
+       style="text-shadow: 2px 2px 0px #000000; -webkit-text-stroke: 1px #000000;">
+      Don't just watch from the sidelines. Be part of the legend. 
+      <br class="hidden md:block">
+      Get your $SUPERNIGGA tokens and join the most epic community in crypto!
+    </p>
+
+    <!-- Buy Now Button -->
+    <div class="flex justify-center">
+      <a href={buynow} target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform duration-300">
+        <img src="/new-socials/buynow-silver.png" alt="Buy Now" class="w-64" />
+      </a>
+    </div>
+
+    <!-- Social Links -->
+    <div class="flex items-center justify-center space-x-8 mb-12">
+      <!-- Dexscreener -->
+      <a href={dex} target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform duration-300">
+        <img src="/new-socials/dexscreener.png" alt="Dexscreener" class="w-12" />
+      </a>
+      
+      <!-- Telegram -->
+      <a href={tg} target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform duration-300">
+        <img src="/new-socials/new-tg.png" alt="Telegram" class="w-12" />
+      </a>
+      
+      <!-- Twitter/X -->
+      <a href={x} target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform duration-300">
+        <img src="/new-socials/silver-x.png" alt="Twitter/X" class="w-12" />
+      </a>
+    </div>
+
+    <!-- Footer Text -->
+    <div class="border-t border-white/20 pt-8">
+      <p class="text-lg text-white/80 font-bold"
+         style="text-shadow: 1px 1px 0px #000000;">
+        Ready to fly with the cape? The hood needs you! 🦸‍♂️
+      </p>
+      <p class="text-sm text-white/60 mt-4"
+         style="text-shadow: 1px 1px 0px #000000;">
+        © 2024 SUPERNIGGA Token. All rights reserved. Not financial advice.
+      </p>
+    </div>
+  </div>
+</Section>
