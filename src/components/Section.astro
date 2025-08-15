@@ -11,6 +11,7 @@ export interface Props {
   fullWidth?: boolean;
   staticBackground?: boolean;
   showScrollIndicator?: boolean;
+  verticalAlign?: 'center' | 'start' | 'end';
 }
 
 const {
@@ -24,15 +25,19 @@ const {
   className = '',
   fullWidth = false,
   staticBackground = false,
-  showScrollIndicator = true
+  showScrollIndicator = true,
+  verticalAlign = 'center'
 } = Astro.props;
+
+const justifyClass = verticalAlign === 'center' ? 'justify-center' : verticalAlign === 'start' ? 'justify-start' : 'justify-end';
+const paddingClass = verticalAlign === 'end' ? (fullWidth ? 'pb-8' : 'px-4 pb-8 md:px-8 lg:px-16') : (fullWidth ? 'py-16' : 'px-4 py-16 md:px-8 lg:px-16');
 
 const sectionClasses = [
   'section-slide',
   fullHeight ? 'min-h-screen' : 'min-h-[50vh]',
-  'flex flex-col items-center justify-center',
+  `flex flex-col items-center ${justifyClass}`,
   'relative w-full',
-  fullWidth ? 'py-16' : 'px-4 py-16 md:px-8 lg:px-16',
+  paddingClass,
   backgroundColor,
   textColor,
   className
