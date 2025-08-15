@@ -24,6 +24,8 @@ const { title, description, keywords, canonicalURL, robots } = Astro.props;
 		<link rel="apple-touch-icon" href="/seo/icon.png" />
 		<!-- Force favicon refresh -->
 		<link rel="icon" type="image/png" href="/seo/icon.png?v=1.0" />
+		<!-- PRELOAD CRITICAL IMAGES -->
+		<link rel="preload" as="image" href="/story/bg2.png" />
 		<!-- THEME COLOR -->
 		<meta name="theme-color" content="#000000" />
 
